@@ -1,0 +1,18 @@
+.block {
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.form-control:focus {
+  border: 1px solid black;
+}
+
+.input-error {
+  border: 1px solid red;
+}
