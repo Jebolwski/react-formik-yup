@@ -2,11 +2,13 @@ import React from "react";
 import * as yup from "yup";
 import "./BasicForm.css";
 import { useFormik } from "formik";
-import { mySvg } from "./icon";
 import { FaBeer } from "react-icons/fa";
 import { AiFillMinusCircle } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
+import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { ReactComponent as YourSvg } from "./iconSvg.svg";
 export const BasicForm = () => {
   const validator = yup.object().shape({
     username: yup.string().max(30).required("Username is required."),
@@ -25,8 +27,9 @@ export const BasicForm = () => {
       .required("Confirm Password is required."),
   });
 
-  const on_submit = () => {
-    console.log("Submitted.");
+  const onSubmit = async (values, actions) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    actions.resetForm();
   };
 
   const {
@@ -45,14 +48,14 @@ export const BasicForm = () => {
       passwordConfirm: "",
     },
     validationSchema: validator,
-    on_submit,
+    onSubmit,
   });
 
   return (
-    <div className="bg-dark block">
+    <div className="block">
       <div className="container-fluid">
-        <div className="row align-items-center justify-content-center">
-          <div className="col-md-6 col-lg-7">
+        <div className="row align-items-center justify-content-evenly">
+          <div className="col-10 col-md-5 col-lg-7">
             <h2 className="mt-4">Register</h2>
             <form onSubmit={handleSubmit} autoComplete="off">
               <h6 className="mt-4">Username</h6>
@@ -63,13 +66,18 @@ export const BasicForm = () => {
                   onChange={handleChange}
                   name="username"
                   onBlur={handleBlur}
-                  className={`form-control shadow-sm ${
+                  className={`form-control shadow-sm ps-5 ${
                     errors.username && touched.username ? "input-error" : null
                   } ${
                     !errors.username && touched.username
                       ? "input-success"
                       : null
                   }`}
+                />
+                <AiOutlineUser
+                  className="position-absolute start-0 top-0 mt-2 ms-3"
+                  size={24}
+                  color="black"
                 />
                 <AiFillMinusCircle
                   color="red"
@@ -105,9 +113,14 @@ export const BasicForm = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   name="email"
-                  className={`form-control shadow-sm ${
+                  className={`form-control shadow-sm ps-5 ${
                     errors.email && touched.email ? "input-error" : null
                   } ${!errors.email && touched.email ? "input-success" : null}`}
+                />
+                <AiOutlineMail
+                  className="position-absolute start-0 top-0 mt-2 ms-3"
+                  size={24}
+                  color="black"
                 />
                 <AiFillMinusCircle
                   color="red"
@@ -140,13 +153,18 @@ export const BasicForm = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   name="password"
-                  className={`form-control shadow-sm ${
+                  className={`form-control shadow-sm ps-5 ${
                     errors.password && touched.password ? "input-error" : null
                   } ${
                     !errors.password && touched.password
                       ? "input-success"
                       : null
                   }`}
+                />
+                <RiLockPasswordLine
+                  className="position-absolute start-0 top-0 mt-2 ms-3"
+                  size={24}
+                  color="black"
                 />
                 <AiFillMinusCircle
                   color="red"
@@ -181,7 +199,7 @@ export const BasicForm = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   name="passwordConfirm"
-                  className={`form-control shadow-sm ${
+                  className={`form-control shadow-sm ps-5 ${
                     errors.passwordConfirm && touched.passwordConfirm
                       ? "input-error"
                       : null
@@ -190,6 +208,11 @@ export const BasicForm = () => {
                       ? "input-success"
                       : null
                   }`}
+                />
+                <RiLockPasswordLine
+                  className="position-absolute start-0 top-0 mt-2 ms-3"
+                  size={24}
+                  color="black"
                 />
                 <AiFillMinusCircle
                   color="red"
@@ -231,8 +254,8 @@ export const BasicForm = () => {
               </div>
             </form>
           </div>
-          <div className="col-md-6 col-lg-4 d-none d-md-inline-block">
-            <div>sadpajd</div>
+          <div className="col-10 col-md-5 col-lg-4 d-none d-md-inline-block">
+            <YourSvg className="col-10" />
           </div>
         </div>
         <br />

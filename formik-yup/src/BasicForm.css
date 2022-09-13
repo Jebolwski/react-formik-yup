@@ -3,6 +3,7 @@
   height: 100%;
   min-height: 100vh;
   color: white;
+  background-color: rgb(28, 73, 54);
 }
 
 * {
@@ -22,11 +23,7 @@
 .submit-button {
   font-size: 16px;
   font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    rgba(65, 212, 19, 1) 0%,
-    rgba(119, 207, 106, 1) 100%
-  );
+  background: linear-gradient(90deg, rgb(41, 99, 75) 0%, rgb(28, 54, 43) 100%);
   border: 0;
   padding: 9px 18px;
   color: white;
@@ -42,11 +39,6 @@
 }
 
 .submit-button:hover {
-  background: linear-gradient(
-    0deg,
-    rgba(65, 212, 19, 1) 0%,
-    rgba(119, 207, 106, 1) 100%
-  );
   transition: 0.4s;
   -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 1);
   -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 1);
